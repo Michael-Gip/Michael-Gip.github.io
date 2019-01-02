@@ -1,0 +1,422 @@
+/* css version: 3.0
+   created:     25.06.18
+   author:      Michael Gipsman
+   email:       gipsman@gmail.com
+*/
+
+/* --- Base rules --- */
+/* Set height html and body equal to window height */
+body {
+	margin: 0;
+	padding: 0;
+	background: #f1f1f1;
+	color: #366;
+	font: 0.9375em/1.2 Arial, sans-serif; /* todo Do I need to set font fo all document equel 16px, or leave it as it is in user browser? */
+}
+
+
+/* Set main header in center of page header with its own styles */
+h1 {
+	margin: 0 auto; /* todo Find out could I make h1, h2, h3 as moduls. it's optimizes code (less to write) */
+	padding: 2px 0 3px;
+	width: 355px;
+	background: #fff;
+	color: #0a555c;
+	font: 1.733333333333333em/1.2 Palatino, serif;
+	font-weight: normal;
+	text-align: center;
+}
+
+/* Headings of second level with icons before them */
+h2 {
+	float: left;
+	margin: 0 0 20px;
+	color: #0a555c;
+	font: 1.4em Palatino, serif;
+	font-weight: normal;
+}
+h2::before {
+	content: url("images/cases-management-icon.jpg");
+	padding-right: 10px;
+	vertical-align: text-top;
+}
+h3 {
+	float: left;
+	margin: 15px 0;
+	color: #0e747e;
+	font: 1.266666666666667em Palatino, serif;
+	font-weight: normal;
+}
+button:focus {
+	outline: none;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+p {
+	margin: 0;
+}
+
+
+
+
+
+/* --- layout rules --- */
+/* Set page container height eqaul html and body, and center it with max width */
+#container {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	max-width: 1367px;
+	width: 71.19791666666667%;
+}
+
+/* Page header with repeating background */
+#page-header {
+	margin: 16px 0;
+	padding: 77px 0 39px;
+	background: url("images/background-clock-transparent.jpg");
+	box-shadow: 0 0 7px 1px #c5c5c5;
+}
+
+
+/* Position all-cases block so, that its height will be eqaul container height minus header hight */
+#all-cases { /* todo check common styles for all sections */
+	position: absolute;
+	bottom: 16px;
+	top: 12.26666666666667em;
+	width: 27.28602779809802%;
+	counter-reset: taskNumber 0;
+	background: #fff;
+}
+
+/* Section with moduls of today cases, social network and physique approach chronicle. */
+#today-cases {
+	float: right;
+	margin-bottom: 16px;
+	width: 61.00950987564009%;
+	background: #fff;
+}
+
+/* Analysis Section for looking for disadvantages in hours management */
+#analysis {
+	float: right;	
+	margin-bottom: 16px;
+	width: 61.00950987564009%;
+	background: #fff;
+	counter-reset: analysis 0;
+	/* Счётчики CSS https://getinstance.info/articles/css/understanding-css-counters-and-their-use-cases/ */
+}
+
+/* Log of success and failure of hours management */
+#log {
+	float: right;	
+	margin-bottom: 16px;
+	width: 61.00950987564009%;
+	background: #fff;	
+}
+.l-pad-shadow {
+	padding: 30px 2.633504023408925%;
+	box-shadow: 0 0 7px 1px #c5c5c5;
+}
+
+/* http://qaru.site/questions/824/make-div-100-height-of-browser-window */
+/* --- Modules --- */
+/* Any button for adding something on the page */
+.add-button {
+	float: left;
+	margin: 7px 0 15px 25px;
+	padding: 7px 16px;
+	border: solid 1px #bcbbb8;
+	border-radius: 30px;
+	background: linear-gradient(#fff, #ebe2b3);
+	color: #f36;
+	font-size: 0.8em;
+	cursor: pointer;
+}
+
+/* Styling all cases item */
+ .list-container {
+	clear: both;
+}
+ .all-cases-item {
+ 	position: relative;
+ 	margin-bottom: 10px;
+ 	padding: 9px 30px 9px 0;
+ 	background: #f2f2f2;
+ }
+ .all-cases-item > p::before {
+ 	padding: 0 1.769911504424779% 0;
+ 	color: #ebc91d;
+  counter-increment: taskNumber 1;
+ 	content: counter(taskNumber, decimal)".";	
+ }
+
+ 
+
+.businesses {
+	clear: left;
+	border-bottom: solid 1px #90bcbc;
+	padding-bottom: 20px;
+	overflow: auto;
+	counter-reset: caseNumber 0;
+}
+.businesses > h3 {
+  float: none;
+}
+/* Styling today business item */
+.business {
+	position: relative;
+  float: left;
+  margin: 0 5.39568345323741% 18px 0;
+  width: 27.93764988009592%;
+}
+.business > div {
+	position: relative;
+	min-height: 90px;
+	padding: 9px 35px 21px 2.575107296137339%;
+	background: #e9f1f1;
+}
+.business__content {
+	color: #6ea7a7;
+}
+.business__content::before {
+	margin-right: 0.6666666666666667em;
+	color: #6ea7a7;
+	content: counter(caseNumber, decimal)".";
+	counter-increment: caseNumber 1;
+}
+/* .business > div:active, .business > div:focus  {
+	outline: none;
+} */
+
+/* Delete button module and submodule*/
+.deleteBut {
+	position: absolute;
+	bottom: 0;
+	right: 2.144772117962466%;
+	top: 0;
+	height: 1.2em;
+	margin: auto 0;
+	padding: 0.1333333333333333em 0.3333333333333333em 0.0666666666666667em 0.2666666666666667em;
+	background: #9cc;
+	cursor: pointer;
+}
+.deleteBut-smaller {
+	bottom: auto;
+	right: 0;
+	padding: 0.25em 0.3333333333333333em 0.1666666666666667em 0.4166666666666667em;
+	font-size: 0.8em;
+}
+.deleteBut-without-bg {
+	background: none;
+	padding: 0;
+}
+
+
+/* drop down menu elements needed for analysis */
+.menuIcon {
+	position: absolute;
+	right: 1.133333333333333em;
+	top: 0;
+	width: 1.133333333333333em;
+	cursor: pointer;
+}
+.menuContainer {
+	display: none;
+	position: absolute;
+	right: 1em;
+	top: 21px;
+	width: 1.4em;
+}
+.execution_icon {
+	padding: 0 2px;
+	width: 1.133333333333333em;
+	cursor: pointer;
+	/* to check where I put state for modul elements and which state I want to do */
+}
+.is-menuContainer-active {
+	display: block;
+}
+
+/* panel applied icons */
+/* panel applied icons */
+.service-icons-panel {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 35px;
+	border-bottom: solid 1px #90bcbc;
+	border-left: solid 1px #90bcbc;
+	height: 1.266666666666667em;
+	padding-left: 2.575107296137339%;
+	line-height: 1.266666666666667;
+}
+
+/* place for the real time and quantity of studies */
+.time-quantity {
+	border-bottom: solid 1px #ccc;
+	border-left: solid 1px #ccc;
+	min-height: 1.307692307692308em; /* for FF */
+	padding: 0 35px 0 0.4615384615384615em;
+	font-size: 0.8666666666666667em;
+	line-height: 1.307692307692308;
+	/* display: list-item; */
+}
+.time-quantity-extraStudy {
+	margin: 11px 0 8px;
+	padding: 0 0 0 0.2307692307692308em;
+}
+.time-quantity-analysis {
+	clear: left;
+	float: left;
+	position: relative;
+	margin: 8px 0;
+	padding-right: 13px;
+	width: 35.1089588377724%; /* 290px */;
+	font-size: 1em;
+}
+.time-quantity-analysis > p::before {
+	padding-right: 2.068965517241379%;
+	color: #999;
+	counter-increment: analysis 1;
+	content: counter(analysis, decimal)".";
+}
+
+
+
+/* physical papproachs's statistics and social networks and news sections */
+.halfInterior {
+	float: left;
+	margin-top: 10px;
+	box-sizing: border-box;
+	width: 50%;
+	overflow: visible;
+}
+.halfInterior-physExercis {	
+	border-right: solid 1px #90bcbc;		
+}
+.halfInterior-socialNet {
+	margin-top: 10px;
+	padding-left: 4.353083434099154%;
+	width: 50%;
+	overflow: auto;
+}
+
+/* floating labels */
+.labels {
+	clear: left;
+	float: left;
+	margin-right: 2.421307506053269%;
+	width: 5.615384615384615em;
+	font-size: 0.9333333333333333em;
+}
+.labels > li {
+	margin: 10px 0 13px;
+}
+.approach-container {
+	float: left;
+	width: 77%;
+}
+/* define type, time and amount */
+.approach {
+	float: left;
+	position: relative;
+	border: solid 1px #9ed1d1;
+	margin: 0 3.883495145631068% 10px 0;
+	padding: 6px 11px 0 6px;
+}
+.approach-phys {
+	width: 40px;
+}
+.approach-news {
+	width: 35.1089588377724%;
+}
+
+.selectApproach {
+	position: relative;
+	margin-bottom: 3px;
+	padding-left: 26px;
+	background: pink;
+	line-height: 1.133333333333333;
+}
+.selectApproach img {
+	margin-top: 50%;
+	transform: translate(0, -50%);
+}
+.selectapproach-socialNet {
+	width: 14px;
+}
+/* drop down variants */
+.variants {
+	display: none;
+	position: absolute;
+	top: 17px;
+	left: 0;
+	background: #fff;
+	z-index: 1;
+}
+.variants li {
+	height: 17px;
+	margin-top: 3px;
+	padding-left: 26px;
+	width: 14px;
+}
+.is-variants {
+	display: block;
+}
+
+
+
+
+/* selection state of approach */
+[data-approach = "none"] {
+	background: #1e90ff url(images/none.png) 5px 3px no-repeat;
+}
+[data-approach = "obliqueByDoor"] {
+	background: #1e90ff url(images/obliqueByDoor.png) 5px no-repeat;
+}
+[data-approach = "squatting"] {
+	background: #1e90ff url(images/squatting.png) 5px no-repeat;
+}
+[data-approach = "obliqueBySwings"] {
+	background: #1e90ff url(images/obliqueBySwings.png) 5px no-repeat;
+}
+[data-approach = "push-up"] {
+	background: #1e90ff url(images/press-up.png) 5px no-repeat;
+}
+[data-approach = "echo"] {
+	background: #1e90ff url(images/echo.jpg) 5px no-repeat;
+}
+[data-approach = "facebook"] {
+	background: #1e90ff url(images/facebook.jpg) 5px no-repeat;
+}
+[data-approach = "newsSite"] {
+	background: #1e90ff url(images/news.jpg) 5px no-repeat;
+}
+
+
+
+/* analyses counter */
+
+/* results of the studies */
+.results {
+	clear: left;
+	border-collapse: separate;
+	border-spacing: 2px 7px;
+	font-size: 0.9333333333333333em;
+}
+.results th {
+  font-weight: normal;
+}
+.results td {
+	height: 1.2em;
+	background: #f2f2f2;
+	text-align: center;
+}
+.resultDeleteBut {
+	cursor: pointer;
+}
