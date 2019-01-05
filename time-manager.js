@@ -701,7 +701,7 @@ var indexes = {
 
     /* for select second approach */
     const second_data_approach = localStorage.getItem("phys" + "_" + indexes.approachIndex);
-    $(firstApproach).attr({
+    $(secondApproach).attr({
       "data-approach": second_data_approach,
       "class": "selectApproach"
       });
@@ -724,14 +724,14 @@ var indexes = {
     $(timeExecution).attr({
         "contenteditable": "true",
         "data-id": "executTime" + "_" + indexes.physTimeIndex
-    })
+    });
     indexes.physTimeIndex++;
     timeExecution.classList.add("time-quantity", "time-quantity-extraStudy");
     timeExecution.addEventListener("blur", saveInStorage);
     $(quantityExecution).attr({
         "contenteditable": "true",
         "data-id": "quantity" + "_" + indexes.physQuantityIndex
-    })
+    });
     indexes.physQuantityIndex++;
     quantityExecution.classList.add("time-quantity", "time-quantity-extraStudy");
     quantityExecution.addEventListener("blur", saveInStorage);
@@ -805,19 +805,19 @@ var indexes = {
     $(scheduled).attr({
         "contenteditable": "true",
         "data-id": "newsScheduledTime" + "_" + indexes.newsScheduledIndex
-    })
+    });
     scheduled.classList.add("time-quantity", "time-quantity-extraStudy");
     scheduled.addEventListener("blur", saveInStorage);
     $(real).attr({
         "contenteditable": "true",
         "data-id": "newsRealTime" + "_" + indexes.newsRealIndex
-    })
+    });
     real.classList.add("time-quantity", "time-quantity-extraStudy");
     real.addEventListener("blur",saveInStorage);
     $(amount).attr({
         "contenteditable": "true",
         "data-id": "newsTimeAmount" + "_" + indexes.newsAmountIndex
-    })
+    });
     amount.classList.add("time-quantity", "time-quantity-extraStudy");
     amount.addEventListener("blur", saveInStorage);
 
