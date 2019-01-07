@@ -17,8 +17,7 @@ var indexes = {
 	rightAttitudeIndex: 1,
 	falseAttitudeIndex: 1,
 	physTotalTimeIndex: 1,
-  physIndex: 1,
-	newsIndex: 1,
+  commonIndex: 1,
 	panelIndex: 1,
 };
 /* For all cases block */
@@ -859,7 +858,7 @@ var indexes = {
     $(editAnalysisPart).attr({
         "contenteditable": "true",
         "data-id": "analysisPart" + "_" + indexes.analysisPartIndex
-    })
+    });
     editAnalysisPart.addEventListener("blur", saveInStorage);
     deleteBut.classList.add("deleteBut", "deleteBut-smaller", "deleteBut-without-bg");
     deleteBut.addEventListener("click", itemsDeleting);
@@ -978,19 +977,13 @@ function selectApproach(event) {
 		    curList.classList.add("is-variants");
 	  }
 	} else {
-      if (approach.classList.contains("selectapproach-socialNet")) {
         const curActivity = event.target.getAttribute("data-approach");
         approach.setAttribute("data-approach", curActivity);
-        localStorage.setItem("news" + "_" + indexes.newsIndex, curActivity);
-        indexes.newsIndex++;
-      } else {
-          const curActivity = event.target.getAttribute("data-approach");
-          approach.setAttribute("data-approach", curActivity);
-          localStorage.setItem("phys" + "_" + indexes.physIndex, curActivity);
-          indexes.physIndex++;
+        localStorage.setItem("approach" + "_" + indexes.commonIndex, curActivity);
+        indexes.commonIndex++;
       }
 	}
-}
+
 
 /* saving in local storage */
 function saveInStorage(event) {
