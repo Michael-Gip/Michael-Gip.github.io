@@ -648,7 +648,7 @@ var indexes = {
   }
 
   /*recreate physical exercises*/
-  for (; (localStorage.getItem("quantity" + "_" + indexes.physQuantityIndex) !== null) && (localStorage.getItem("executTime" + "_" + indexes.physTimeIndex) !== null)  && (localStorage.getItem("phys" + "_" + indexes.approachIndex) !== null); indexes.physQuantityIndex++) {
+  for (; (localStorage.getItem("quantity" + "_" + indexes.physQuantityIndex) !== null) && (localStorage.getItem("executTime" + "_" + indexes.physTimeIndex) !== null)  && (localStorage.getItem("phys" + "_" + indexes.physIndex) !== null); indexes.physQuantityIndex++) {
   	/*creating a new nodes*/
     var container = document.querySelector(".phys"),
     newExercises = document.createElement("ul"),
@@ -678,12 +678,12 @@ var indexes = {
     deleteBut.classList.add("deleteBut", "deleteBut-smaller", "deleteBut-without-bg");
     deleteBut.addEventListener("click", itemsDeleting);
     /* for select first approach */
-    const first_data_approach = localStorage.getItem("phys" + "_" + indexes.approachIndex);
+    const first_data_approach = localStorage.getItem("phys" + "_" + indexes.physIndex);
   	$(firstApproach).attr({
       "data-approach": first_data_approach,
       "class": "selectApproach"
       });
-    indexes.approachIndex++;
+    indexes.physIndex++;
     $(arrowForFirst).attr({
         "src": "images/arrow_drop_down.png",
         "alt": "arrow drop down menu"
@@ -700,12 +700,12 @@ var indexes = {
     firstPushUp.addEventListener("click", selectApproach);
 
     /* for select second approach */
-    const second_data_approach = localStorage.getItem("phys" + "_" + indexes.approachIndex);
+    const second_data_approach = localStorage.getItem("phys" + "_" + indexes.physIndex);
     $(secondApproach).attr({
       "data-approach": second_data_approach,
       "class": "selectApproach"
       });
-      indexes.approachIndex++;
+      indexes.physIndex++;
     $(arrowForSecond).attr({
       "src": "images/arrow_drop_down.png",
       "alt": "arrow arrow drop down menu"
@@ -768,13 +768,14 @@ var indexes = {
   }
 
   /* recreate data about network activity */ 
-  for (; localStorage.getItem("newsRealTime" + "_" + indexes.newsRealIndex) !== null; indexes.newsRealIndex++) {
+  for (; localStorage.getItem("newsRealTime" + "_" + indexes.newsRealIndex) !== null && localStorage.getItem("news" + "_" + indexes.newsIndex) !== null; indexes.newsRealIndex++) {
   	/* create nodes */
   	var container = document.querySelector(".halfInterior-socialNet .approach-container"),
     browsingNews = document.createElement("ul"),
     deleteBut = document.createElement("li"),
     deleteButIcon = document.createTextNode("X"),
     firstApproach = document.createElement("li"),
+    first_data_approach = localStorage.getItem("news" + "_" + indexes.newsIndex),
     firstApproachArrow = document.createElement("img"),
     variants = document.createElement("ul"),
     firstVariant = document.createElement("li"),
@@ -791,8 +792,9 @@ var indexes = {
     browsingNews.classList.add("approach", "approach-news");
     deleteBut.classList.add("deleteBut", "deleteBut-smaller", "deleteBut-without-bg");
     deleteBut.addEventListener("click", itemsDeleting);
-    firstApproach.setAttribute("data-approach", "none");
+    firstApproach.setAttribute("data-approach", first_data_approach);
     firstApproach.classList.add("selectApproach", "selectapproach-socialNet");
+    indexes.newsIndex++;
     $(firstApproachArrow).attr({
         "src": "images/arrow_drop_down.png",
         "alt": "arrow drop down menu"
