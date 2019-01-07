@@ -17,9 +17,9 @@ var indexes = {
 	rightAttitudeIndex: 1,
 	falseAttitudeIndex: 1,
 	physTotalTimeIndex: 1,
-	netTotalIndex: 1,
+  physIndex: 1,
+	newsIndex: 1,
 	panelIndex: 1,
-	approachIndex: 1
 };
 /* For all cases block */
 (function () {
@@ -967,6 +967,7 @@ function createMenuState(event) {
 
 /* listening event for select approach and saving it in localStorage  */
 function selectApproach(event) {
+  const approach = event.target.parentElement.parentElement;
 	if (event.target.nodeName === "IMG") {
     var curList = event.target.nextSibling;
 	  if (curList.classList.contains("is-variants")) {
@@ -975,11 +976,17 @@ function selectApproach(event) {
 		    curList.classList.add("is-variants");
 	  }
 	} else {
-      const curActivity = event.target.getAttribute("data-approach");
-      const approach = event.target.parentElement.parentElement;
-      approach.setAttribute("data-approach", curActivity);
-      localStorage.setItem("phys" + "_" + indexes.approachIndex, curActivity);
-      indexes.approachIndex++;
+      if (approach.classList.contains("selectapproach-socialNet")) {
+        const curActivity = event.target.getAttribute("data-approach");
+        approach.setAttribute("data-approach", curActivity);
+        localStorage.setItem("news" + "_" + indexes.newsIndex, curActivity);
+        indexes.newsIndex++;
+      } else {
+          const curActivity = event.target.getAttribute("data-approach");
+          approach.setAttribute("data-approach", curActivity);
+          localStorage.setItem("phys" + "_" + indexes.physIndex, curActivity);
+          indexes.physIndex++;
+      }
 	}
 }
 
