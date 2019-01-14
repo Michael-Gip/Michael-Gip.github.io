@@ -26,7 +26,7 @@ var indexes = {
   });
   drob_down_listItems.forEach(function(item, index, collection) {
     item.addEventListener("click", selectApproach);
-  })
+  });
 }());
 // This function for all approaches
 function selectApproach(event) {
@@ -43,6 +43,6 @@ function selectApproach(event) {
   } else {
     main_item.setAttribute("data-approach", data_value);
     localStorage.setItem("phys" + "_" + indexes.phys, data_value);
-    indexes.phys++
+    indexes.phys++;
   }  
 }
