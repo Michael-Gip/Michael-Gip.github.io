@@ -17,8 +17,8 @@ var indexes = {
 	rightAttitudeIndex: 1,
 	falseAttitudeIndex: 1,
 	physTotalTimeIndex: 1,
-  commonIndex: 1,
-	panelIndex: 1,
+    physNetIndex: 1,
+	panelIndex: 1
 };
 /* For all cases block */
 (function () {
@@ -218,43 +218,39 @@ var indexes = {
     deleteBut.classList.add("deleteBut", "deleteBut-smaller", "deleteBut-without-bg");
     deleteBut.addEventListener("click", itemsDeleting);
     /* for select first approach */
-    $(firstApproach).attr({
-    	"data-approach": "none",
-    	"class": "selectApproach"
-    });
+    firstApproach.setAttribute("data-approach", "phys");
+    firstApproach.classList.add("selectApproach", "none");
     $(arrowForFirst).attr({
     	"src": "images/arrow_drop_down.png",
     	"alt": "arrow drop down menu"
     });
     arrowForFirst.addEventListener("click", selectApproach);
     variantsForFirst.setAttribute("class", "variants");
-    firstObliqueDoor.setAttribute("data-approach", "obliqueByDoor");
+    firstObliqueDoor.className = "obliqueByDoor";
     firstObliqueDoor.addEventListener("click", selectApproach);
-    firstSquatting.setAttribute("data-approach", "squatting");
+    firstSquatting.className = "squatting";
     firstSquatting.addEventListener("click", selectApproach);
-    firstObliqueSwings.setAttribute("data-approach", "obliqueBySwings");
+    firstObliqueSwings.className = "obliqueBySwings";
     firstObliqueSwings.addEventListener("click", selectApproach);
-    firstPushUp.setAttribute("data-approach", "push-up");
+    firstPushUp.className = "push-up";
     firstPushUp.addEventListener("click", selectApproach);
 
     /* for select second approach */
-    $(secondApproach).attr({
-    	"data-approach": "none",
-    	"class": "selectApproach"
-    });
+    secondApproach.setAttribute("data-approach", "none");
+    secondApproach.classList.add("selectApproach", "none");
     $(arrowForSecond).attr({
       "src": "images/arrow_drop_down.png",
       "alt": "arrow arrow drop down menu"
     });
     arrowForSecond.addEventListener("click", selectApproach);
     variantsForSecond.setAttribute("class", "variants");
-    secondObliqueDoor.setAttribute("data-approach", "obliqueByDoor");
+    secondObliqueDoor.className = "obliqueByDoor";
     secondObliqueDoor.addEventListener("click", selectApproach);
-    secondSquatting.setAttribute("data-approach", "squatting");
+    secondSquatting.className = "squatting";
     secondSquatting.addEventListener("click", selectApproach);
-    secondObliqueSwings.setAttribute("data-approach", "obliqueBySwings");
+    secondObliqueSwings.className = "obliqueBySwings";
     secondObliqueSwings.addEventListener("click", selectApproach);
-    secondPushUp.setAttribute("data-approach", "push-up");
+    secondPushUp.className = "push-up";
     secondPushUp.addEventListener("click", selectApproach);
 
     /* time and quantity */
@@ -329,19 +325,19 @@ var indexes = {
   	browsingNews.classList.add("approach", "approach-news");
   	deleteBut.classList.add("deleteBut", "deleteBut-smaller", "deleteBut-without-bg");
   	deleteBut.addEventListener("click", itemsDeleting);
-  	firstApproach.setAttribute("data-approach", "none");
-  	firstApproach.classList.add("selectApproach", "selectapproach-socialNet");
+  	firstApproach.setAttribute("data-approach", "net");
+  	firstApproach.classList.add("selectApproach", "selectapproach-socialNet", "none");
   	$(firstApproachArrow).attr({
   		"src": "images/arrow_drop_down.png",
   		"alt": "arrow drop down menu"
   	});
   	firstApproachArrow.addEventListener("click", selectApproach);
   	variants.setAttribute("class", "variants");
-  	firstVariant.setAttribute("data-approach", "echo");
+  	firstVariant.className = "echo";
   	firstVariant.addEventListener("click", selectApproach);
-  	secondVariant.setAttribute("data-approach", "facebook");
+  	secondVariant.className = "facebook";
   	secondVariant.addEventListener("click", selectApproach);
-  	thirdVariant.setAttribute("data-approach", "newsSite");
+  	thirdVariant.className = "newsSite";
   	thirdVariant.addEventListener("click", selectApproach);
   	$(scheduled).attr({
   		"contenteditable": "true",
@@ -977,10 +973,13 @@ function selectApproach(event) {
 		    curList.classList.add("is-variants");
 	  }
 	} else {
-        const curActivity = event.target.getAttribute("data-approach");
-        approach.setAttribute("data-approach", curActivity + "_" + indexes.commonIndex);
-        localStorage.setItem(curActivity + "_" + indexes.commonIndex, curActivity);
-        indexes.commonIndex++;
+        const curActivity = event.target.className;
+        approach.classList.replace("none", curActivity),
+        cur_key = approach.getAttribute('data-approach');
+        approach.setAttribute('data-approach', cur_key + "_" + indexes.physNetIndex);
+        localStorage.setItem(cur_key + "_" + indexes.physNetIndex, curActivity);
+        indexes.physNetIndex++;
+        // second key that I save in local storage is wrong name
       }
 	}
 

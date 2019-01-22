@@ -372,28 +372,28 @@ p {
 
 
 /* selection state of approach */
-[data-approach^="none"] {
+.none {
 	background: #1e90ff url(images/none.png) 5px 3px no-repeat;
 }
-[data-approach^="obliqueByDoor"] {
+.obliqueByDoor {
 	background: #1e90ff url(images/obliqueByDoor.png) 5px no-repeat;
 }
-[data-approach^="squatting"] {
+.squatting {
 	background: #1e90ff url(images/squatting.png) 5px no-repeat;
 }
-[data-approach^="obliqueBySwings"] {
+.obliqueBySwings {
 	background: #1e90ff url(images/obliqueBySwings.png) 5px no-repeat;
 }
-[data-approach^="push-up"] {
+.push-up {
 	background: #1e90ff url(images/press-up.png) 5px no-repeat;
 }
-[data-approach^="echo"] {
+.echo {
 	background: #1e90ff url(images/echo.jpg) 5px no-repeat;
 }
-[data-approach^="facebook"] {
+.facebook {
 	background: #1e90ff url(images/facebook.jpg) 5px no-repeat;
 }
-[data-approach^="newsSite"] {
+.newsSite {
 	background: #1e90ff url(images/news.jpg) 5px no-repeat;
 }
 
