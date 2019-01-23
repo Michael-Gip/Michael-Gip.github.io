@@ -9,7 +9,8 @@ var indexes = {
 	physTimeIndex: 1,
 	physQuantityIndex: 1,
 	newsScheduledIndex: 1,
-	newsRealIndex: 1,
+    newsRealIndex: 1,
+    newsAmountIndex: 1,
 	analysisPartIndex: 1,
 	dateIndex: 1,
 	tomatoAmountIndex: 1,
@@ -17,7 +18,8 @@ var indexes = {
 	rightAttitudeIndex: 1,
 	falseAttitudeIndex: 1,
 	physTotalTimeIndex: 1,
-    physNetIndex: 1,
+    physIndex: 1,
+    netIndex: 1,
 	panelIndex: 1
 };
 /* For all cases block */
@@ -236,7 +238,7 @@ var indexes = {
     firstPushUp.addEventListener("click", selectApproach);
 
     /* for select second approach */
-    secondApproach.setAttribute("data-approach", "none");
+    secondApproach.setAttribute("data-approach", "phys");
     secondApproach.classList.add("selectApproach", "none");
     $(arrowForSecond).attr({
       "src": "images/arrow_drop_down.png",
@@ -674,10 +676,8 @@ var indexes = {
     deleteBut.addEventListener("click", itemsDeleting);
     /* for select first approach */
     const first_data_approach = localStorage.getItem("phys" + "_" + indexes.physIndex);
-  	$(firstApproach).attr({
-      "data-approach": first_data_approach,
-      "class": "selectApproach"
-      });
+  	firstApproach.setAttribute("data-approach", "phys" + "_" + indexes.physIndex);
+      firstApproach.classList.add("selectApproach", first_data_approach);
     indexes.physIndex++;
     $(arrowForFirst).attr({
         "src": "images/arrow_drop_down.png",
@@ -696,11 +696,9 @@ var indexes = {
 
     /* for select second approach */
     const second_data_approach = localStorage.getItem("phys" + "_" + indexes.physIndex);
-    $(secondApproach).attr({
-      "data-approach": second_data_approach,
-      "class": "selectApproach"
-      });
-      indexes.physIndex++;
+    secondApproach.setAttribute('data-approach', "phys" + "_" + indexes.physIndex);
+    secondApproach.classList.add('selectApproach', second_data_approach);
+    indexes.physIndex++;
     $(arrowForSecond).attr({
       "src": "images/arrow_drop_down.png",
       "alt": "arrow arrow drop down menu"
@@ -763,14 +761,14 @@ var indexes = {
   }
 
   /* recreate data about network activity */ 
-  for (; localStorage.getItem("newsRealTime" + "_" + indexes.newsRealIndex) !== null && localStorage.getItem("news" + "_" + indexes.newsIndex) !== null; indexes.newsRealIndex++) {
+  for (; localStorage.getItem("newsRealTime" + "_" + indexes.newsRealIndex) !== null && localStorage.getItem("net" + "_" + indexes.netIndex) !== null; indexes.newsRealIndex++) {
   	/* create nodes */
   	var container = document.querySelector(".halfInterior-socialNet .approach-container"),
     browsingNews = document.createElement("ul"),
     deleteBut = document.createElement("li"),
     deleteButIcon = document.createTextNode("X"),
     firstApproach = document.createElement("li"),
-    first_data_approach = localStorage.getItem("news" + "_" + indexes.newsIndex),
+    first_data_approach = localStorage.getItem("net" + "_" + indexes.netIndex),
     firstApproachArrow = document.createElement("img"),
     variants = document.createElement("ul"),
     firstVariant = document.createElement("li"),
@@ -787,18 +785,18 @@ var indexes = {
     browsingNews.classList.add("approach", "approach-news");
     deleteBut.classList.add("deleteBut", "deleteBut-smaller", "deleteBut-without-bg");
     deleteBut.addEventListener("click", itemsDeleting);
-    firstApproach.setAttribute("data-approach", first_data_approach);
-    firstApproach.classList.add("selectApproach", "selectapproach-socialNet");
-    indexes.newsIndex++;
+    firstApproach.setAttribute("data-approach", "net" + "_" + indexes.netIndex);
+    firstApproach.classList.add("selectApproach", "selectapproach-socialNet", first_data_approach);
+    indexes.netIndex++;
     $(firstApproachArrow).attr({
         "src": "images/arrow_drop_down.png",
         "alt": "arrow drop down menu"
     });
     firstApproachArrow.addEventListener("click", selectApproach);
     variants.setAttribute("class", "variants");
-    firstVariant.setAttribute("data-approach", "echo");
-    secondVariant.setAttribute("data-approach", "facebook");
-    thirdVariant.setAttribute("data-approach", "newsSite");
+    firstVariant.className = 'echo';
+    secondVariant.className = 'facebook';
+    thirdVariant.className = 'newsSite';
     $(scheduled).attr({
         "contenteditable": "true",
         "data-id": "newsScheduledTime" + "_" + indexes.newsScheduledIndex
@@ -976,10 +974,14 @@ function selectApproach(event) {
         const curActivity = event.target.className;
         approach.classList.replace("none", curActivity),
         cur_key = approach.getAttribute('data-approach');
-        approach.setAttribute('data-approach', cur_key + "_" + indexes.physNetIndex);
-        localStorage.setItem(cur_key + "_" + indexes.physNetIndex, curActivity);
-        indexes.physNetIndex++;
-        // second key that I save in local storage is wrong name
+        if (cur_key === 'phys') {
+					approach.setAttribute('data-approach', cur_key + "_" + indexes.physIndex);
+        } else {
+					approach.setAttribute('data-approach', cur_key + "_" + indexes.netIndex);
+				}
+        
+        localStorage.setItem(cur_key + "_" + indexes.physIndex, curActivity);
+        indexes.physIndex++;
       }
 	}
 
@@ -1020,6 +1022,6 @@ function busExecutParameters(event) {
   localStorage.setItem(panelStorageKey, panel.innerHTML);
 }
 
-/* пробелы в секторе аттрибута -- это была проблемма. Теперь настроить */
+/* line 977 -- in each part (if and else) set the same key and value for saving in local storage */
 /* CMACSS and javascript */
 /*Поработать с отдельными задачами в html, которые мне кажется я не запомнил как делать */
