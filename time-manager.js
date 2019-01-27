@@ -9,8 +9,8 @@ var indexes = {
 	physTimeIndex: 1,
 	physQuantityIndex: 1,
 	newsScheduledIndex: 1,
-    newsRealIndex: 1,
-    newsAmountIndex: 1,
+  newsRealIndex: 1,
+  newsAmountIndex: 1,
 	analysisPartIndex: 1,
 	dateIndex: 1,
 	tomatoAmountIndex: 1,
@@ -18,8 +18,8 @@ var indexes = {
 	rightAttitudeIndex: 1,
 	falseAttitudeIndex: 1,
 	physTotalTimeIndex: 1,
-    physIndex: 1,
-    netIndex: 1,
+  physIndex: 1,
+  netIndex: 1,
 	panelIndex: 1
 };
 /* For all cases block */
@@ -39,7 +39,7 @@ var indexes = {
     newCase.setAttribute("class", "all-cases-item");
     $(newEditPart).attr({
         "contenteditable": "true",
-        "data-id": "allCases" + "_" + indexes.allCasesIndex
+        "data-approach": "allCases" + "_" + indexes.allCasesIndex
     });
     indexes.allCasesIndex++;
     newEditPart.addEventListener("blur", saveInStorage);
@@ -87,7 +87,7 @@ var indexes = {
     $(curEditPart).attr({
         "contenteditable": "true",
         "class": "business__content",
-        "data-id": "businessContent" + "_" + indexes.businessIndex
+        "data-approach": "businessContent" + "_" + indexes.businessIndex
     });
     indexes.businessIndex++;
     curEditPart.addEventListener("blur", saveInStorage);
@@ -138,18 +138,18 @@ var indexes = {
     curDeleteBut.addEventListener("click", itemsDeleting);
     $(panel).attr({
     	"class": "service-icons-panel",
-    	"data-id": "panel" + "_" + indexes.panelIndex
+    	"data-approach": "panel" + "_" + indexes.panelIndex
     });
     $(planned).attr({
         "contenteditable": "true",
-        "data-id": "planned" + "_" + indexes.plannedIndex
+        "data-approach": "planned" + "_" + indexes.plannedIndex
     });
     indexes.plannedIndex++;
     planned.classList.add("time-quantity", "planned");
     planned.addEventListener("blur", saveInStorage);
     $(real).attr({
         "contenteditable": "true",
-        "data-id": "real" + "_" + indexes.realIndex
+        "data-approach": "real" + "_" + indexes.realIndex
     });
     indexes.realIndex++;
     real.classList.add("time-quantity", "real");
@@ -258,14 +258,14 @@ var indexes = {
     /* time and quantity */
     $(timeExecution).attr({
     	"contenteditable": "true",
-    	"data-id": "executTime" + "_" + indexes.physTimeIndex
+    	"data-approach": "executTime" + "_" + indexes.physTimeIndex
     });
     indexes.physTimeIndex++;
     timeExecution.classList.add("time-quantity", "time-quantity-extraStudy");
     timeExecution.addEventListener("blur", saveInStorage);
     $(quantityExecution).attr({
     	"contenteditable": "true",
-    	"data-id": "quantity" + "_" + indexes.physQuantityIndex
+    	"data-approach": "quantity" + "_" + indexes.physQuantityIndex
     });
     indexes.physQuantityIndex++;
     quantityExecution.classList.add("time-quantity", "time-quantity-extraStudy");
@@ -343,21 +343,21 @@ var indexes = {
   	thirdVariant.addEventListener("click", selectApproach);
   	$(scheduled).attr({
   		"contenteditable": "true",
-  		"data-id": "newsScheduledTime" + "_" + indexes.newsScheduledIndex
+  		"data-approach": "newsScheduledTime" + "_" + indexes.newsScheduledIndex
   	});
   	indexes.newsScheduledIndex++;
   	scheduled.classList.add("time-quantity", "time-quantity-extraStudy");
   	scheduled.addEventListener("blur", saveInStorage);
   	$(real).attr({
   		"contenteditable": "true",
-  		"data-id": "newsRealTime" + "_" + indexes.newsRealIndex
+  		"data-approach": "newsRealTime" + "_" + indexes.newsRealIndex
   	});
   	indexes.newsRealIndex++;
   	real.classList.add("time-quantity", "time-quantity-extraStudy");
   	real.addEventListener("blur",saveInStorage);
   	$(amount).attr({
   		"contenteditable": "true",
-  		"data-id": "newsTimeAmount" + "_" + indexes.newsAmountIndex
+  		"data-approach": "newsTimeAmount" + "_" + indexes.newsAmountIndex
   	});
   	indexes.newsAmountIndex++;
   	amount.classList.add("time-quantity", "time-quantity-extraStudy");
@@ -402,7 +402,7 @@ var indexes = {
   	analysisItem.classList.add("time-quantity", "time-quantity-analysis");
   	$(editAnalysisPart).attr({
   		"contenteditable": "true",
-  		"data-id": "analysisPart" + "_" + indexes.analysisPartIndex
+  		"data-approach": "analysisPart" + "_" + indexes.analysisPartIndex
   	})
   	indexes.analysisPartIndex++;
   	editAnalysisPart.addEventListener("blur", saveInStorage);
@@ -439,43 +439,43 @@ var indexes = {
   	/* appending attributes */
   	$(date).attr({
   		"contenteditable": "true",
-  		"data-id": "date" + "_" + indexes.dateIndex
+  		"data-approach": "date" + "_" + indexes.dateIndex
   	});
   	indexes.dateIndex++;
   	date.addEventListener("blur", saveInStorage);
   	$(tomatoAmount).attr({
   		"contenteditable": "true",
-  		"data-id": "tomatoAmount" + "_" + indexes.tomatoAmountIndex
+  		"data-approach": "tomatoAmount" + "_" + indexes.tomatoAmountIndex
   	});
   	indexes.tomatoAmountIndex++;
   	tomatoAmount.addEventListener("blur", saveInStorage);
   	$(strainAmount).attr({
   		"contenteditable": "true",
-  		"data-id": "strainAmount" + "_" + indexes.strainIndex
+  		"data-approach": "strainAmount" + "_" + indexes.strainIndex
   	});
   	indexes.strainIndex++;
   	strainAmount.addEventListener("blur", saveInStorage);
   	$(rightAttitude).attr({
   		"contenteditable": "true",
-  		"data-id": "rightAttitude" + "_" + indexes.rightAttitudeIndex
+  		"data-approach": "rightAttitude" + "_" + indexes.rightAttitudeIndex
   	});
   	indexes.rightAttitudeIndex++;
   	rightAttitude.addEventListener("blur", saveInStorage);
   	$(falseAttitude).attr({
   		"contenteditable": "true",
-      "data-id": "falseAttitude" + "_" + indexes.falseAttitudeIndex
+      "data-approach": "falseAttitude" + "_" + indexes.falseAttitudeIndex
   	});
   	indexes.falseAttitudeIndex++;
   	falseAttitude.addEventListener("blur", saveInStorage);
   	$(physTotalTime).attr({
   		"contenteditable": "true",
-  		"data-id": "physTotalTime" + "_" + indexes.physTotalTimeIndex
+  		"data-approach": "physTotalTime" + "_" + indexes.physTotalTimeIndex
   	});
   	indexes.physTotalTimeIndex++;
   	physTotalTime.addEventListener("blur", saveInStorage);
   	$(netTotalTime).attr({
   		"contenteditable": "true",
-  		"data-id": "netTotalTime" + "_" + indexes.netTotalTimeIndex
+  		"data-approach": "netTotalTime" + "_" + indexes.netTotalTimeIndex
   	});
   	indexes.netTotalTimeIndex++;
   	netTotalTime.addEventListener("blur", saveInStorage);
@@ -513,7 +513,7 @@ var indexes = {
   	newCase.setAttribute("class", "all-cases-item");
     $(newEditPart).attr({
         "contenteditable": "true",
-        "data-id": "allCases" + "_" + indexes.allCasesIndex
+        "data-approach": "allCases" + "_" + indexes.allCasesIndex
     });
     newEditPart.addEventListener("blur", saveInStorage);
     newDeleteBut.setAttribute("class", "deleteBut");
@@ -552,7 +552,7 @@ var indexes = {
     $(curEditPart).attr({
         "contenteditable": "true",
         "class": "business__content",
-        "data-id": "businessContent" + "_" + indexes.businessIndex
+        "data-approach": "businessContent" + "_" + indexes.businessIndex
     });
     curEditPart.addEventListener("blur", saveInStorage);
     $(menuIcon).attr({
@@ -609,14 +609,14 @@ var indexes = {
 
     $(planned).attr({
         "contenteditable": "true",
-        "data-id": "planned" + "_" + indexes.plannedIndex
+        "data-approach": "planned" + "_" + indexes.plannedIndex
     });
     indexes.plannedIndex++;
     planned.classList.add("time-quantity", "planned");
     planned.addEventListener("blur", saveInStorage);
     $(real).attr({
         "contenteditable": "true",
-        "data-id": "real" + "_" + indexes.realIndex
+        "data-approach": "real" + "_" + indexes.realIndex
     });
     indexes.realIndex++;
     real.classList.add("time-quantity", "real");
@@ -716,14 +716,14 @@ var indexes = {
     secondPushUp.setAttribute("data-approach", "push-up");
     $(timeExecution).attr({
         "contenteditable": "true",
-        "data-id": "executTime" + "_" + indexes.physTimeIndex
+        "data-approach": "executTime" + "_" + indexes.physTimeIndex
     });
     indexes.physTimeIndex++;
     timeExecution.classList.add("time-quantity", "time-quantity-extraStudy");
     timeExecution.addEventListener("blur", saveInStorage);
     $(quantityExecution).attr({
         "contenteditable": "true",
-        "data-id": "quantity" + "_" + indexes.physQuantityIndex
+        "data-approach": "quantity" + "_" + indexes.physQuantityIndex
     });
     indexes.physQuantityIndex++;
     quantityExecution.classList.add("time-quantity", "time-quantity-extraStudy");
@@ -799,19 +799,19 @@ var indexes = {
     thirdVariant.className = 'newsSite';
     $(scheduled).attr({
         "contenteditable": "true",
-        "data-id": "newsScheduledTime" + "_" + indexes.newsScheduledIndex
+        "data-approach": "newsScheduledTime" + "_" + indexes.newsScheduledIndex
     });
     scheduled.classList.add("time-quantity", "time-quantity-extraStudy");
     scheduled.addEventListener("blur", saveInStorage);
     $(real).attr({
         "contenteditable": "true",
-        "data-id": "newsRealTime" + "_" + indexes.newsRealIndex
+        "data-approach": "newsRealTime" + "_" + indexes.newsRealIndex
     });
     real.classList.add("time-quantity", "time-quantity-extraStudy");
     real.addEventListener("blur",saveInStorage);
     $(amount).attr({
         "contenteditable": "true",
-        "data-id": "newsTimeAmount" + "_" + indexes.newsAmountIndex
+        "data-approach": "newsTimeAmount" + "_" + indexes.newsAmountIndex
     });
     amount.classList.add("time-quantity", "time-quantity-extraStudy");
     amount.addEventListener("blur", saveInStorage);
@@ -851,7 +851,7 @@ var indexes = {
     analysisItem.classList.add("time-quantity", "time-quantity-analysis");
     $(editAnalysisPart).attr({
         "contenteditable": "true",
-        "data-id": "analysisPart" + "_" + indexes.analysisPartIndex
+        "data-approach": "analysisPart" + "_" + indexes.analysisPartIndex
     });
     editAnalysisPart.addEventListener("blur", saveInStorage);
     deleteBut.classList.add("deleteBut", "deleteBut-smaller", "deleteBut-without-bg");
@@ -890,37 +890,37 @@ var indexes = {
     /* appending attributes */
     $(date).attr({
         "contenteditable": "true",
-        "data-id": "date" + "_" + indexes.dateIndex
+        "data-approach": "date" + "_" + indexes.dateIndex
     });
     date.addEventListener("blur", saveInStorage);
     $(tomatoAmount).attr({
         "contenteditable": "true",
-        "data-id": "tomatoAmount" + "_" + indexes.tomatoAmountIndex
+        "data-approach": "tomatoAmount" + "_" + indexes.tomatoAmountIndex
     });
     tomatoAmount.addEventListener("blur", saveInStorage);
     $(strainAmount).attr({
         "contenteditable": "true",
-        "data-id": "strainAmount" + "_" + indexes.strainIndex
+        "data-approach": "strainAmount" + "_" + indexes.strainIndex
     });
     strainAmount.addEventListener("blur", saveInStorage);
     $(rightAttitude).attr({
         "contenteditable": "true",
-        "data-id": "rightAttitude" + "_" + indexes.rightAttitudeIndex
+        "data-approach": "rightAttitude" + "_" + indexes.rightAttitudeIndex
     });
     rightAttitude.addEventListener("blur", saveInStorage);
     $(falseAttitude).attr({
         "contenteditable": "true",
-      "data-id": "falseAttitude" + "_" + indexes.falseAttitudeIndex
+      "data-approach": "falseAttitude" + "_" + indexes.falseAttitudeIndex
     });
     falseAttitude.addEventListener("blur", saveInStorage);
     $(physTotalTime).attr({
         "contenteditable": "true",
-        "data-id": "physTotalTime" + "_" + indexes.physTotalTimeIndex
+        "data-approach": "physTotalTime" + "_" + indexes.physTotalTimeIndex
     });
     physTotalTime.addEventListener("blur", saveInStorage);
     $(netTotalTime).attr({
         "contenteditable": "true",
-        "data-id": "netTotalTime" + "_" + indexes.netTotalTimeIndex
+        "data-approach": "netTotalTime" + "_" + indexes.netTotalTimeIndex
     });
     netTotalTime.addEventListener("blur", saveInStorage);
     logDeleteBut.className = "resultDeleteBut";
@@ -976,19 +976,20 @@ function selectApproach(event) {
         cur_key = approach.getAttribute('data-approach');
         if (cur_key === 'phys') {
 					approach.setAttribute('data-approach', cur_key + "_" + indexes.physIndex);
+					localStorage.setItem(cur_key + "_" + indexes.physIndex, curActivity);
+					indexes.physIndex++;
         } else {
 					approach.setAttribute('data-approach', cur_key + "_" + indexes.netIndex);
+					localStorage.setItem(cur_key + "_" + indexes.netIndex, curActivity);
+					indexes.netIndex++;
 				}
-        
-        localStorage.setItem(cur_key + "_" + indexes.physIndex, curActivity);
-        indexes.physIndex++;
       }
 	}
 
 
 /* saving in local storage */
 function saveInStorage(event) {
-	var key = event.target.getAttribute("data-id"),
+	var key = event.target.getAttribute("data-approach"),
 	content = event.target.innerHTML;
 	localStorage.setItem(key, content);
 }
@@ -996,9 +997,9 @@ function saveInStorage(event) {
 /* to remove unnecessary cases */
 function itemsDeleting(event) {
 	var removedElement = event.target.parentElement;
-	editElements = removedElement.querySelectorAll("[data-id]");
+	editElements = removedElement.querySelectorAll("[data-approach]");
 	editElements.forEach(function(item, index, collection) {
-		localStorage.removeItem(item.getAttribute("data-id"));
+		localStorage.removeItem(item.getAttribute("data-approach"));
 	});
 	removedElement.remove();
 }
@@ -1009,7 +1010,7 @@ function busExecutParameters(event) {
   icon_alt = event.target.getAttribute("alt"),
   panel_container = event.target.parentElement.parentElement,
   panel = panel_container.querySelector(".service-icons-panel"),
-  panelStorageKey = panel.getAttribute("data-id");
+  panelStorageKey = panel.getAttribute("data-approach");
   alert(panelStorageKey);
   img = document.createElement("img");
   $(img).attr({
@@ -1022,6 +1023,6 @@ function busExecutParameters(event) {
   localStorage.setItem(panelStorageKey, panel.innerHTML);
 }
 
-/* line 977 -- in each part (if and else) set the same key and value for saving in local storage */
+
 /* CMACSS and javascript */
 /*Поработать с отдельными задачами в html, которые мне кажется я не запомнил как делать */
