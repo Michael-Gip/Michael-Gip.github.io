@@ -36,7 +36,10 @@ var indexes = {
     newDeleteBut = document.createElement("span"),
     newDeleteIcon = document.createTextNode("X");
 
-    newCase.setAttribute("class", "all-cases-item");
+    $(newCase).attr({
+      "class": "all-cases-item",
+      "draggable": "true",
+    });
     $(newEditPart).attr({
         "contenteditable": "true",
         "data-approach": "allCases" + "_" + indexes.allCasesIndex
@@ -56,12 +59,11 @@ var indexes = {
 /* For today cases block */
 
 (function () {
-  var addCurCaseButton = document.querySelector(".current-case"), 
-  classCollectin;
+  var addCurCaseButton = document.querySelector(".current-case");
   addCurCaseButton.addEventListener("click", addCurCase);
 
   function addCurCase(event) {
-    /* creating elements */
+    /* creation elements */
     event.preventDefault();
     var container = document.querySelector(".businesses"),
     curCase = document.createElement("div"),
@@ -83,7 +85,10 @@ var indexes = {
     real = document.createElement("p");
 
     /* assign attributes and listening for event */
-    curCase.className = "business";
+    $(curCase).attr({
+      "class": "business",
+      "draggable": "true"
+    });
     $(curEditPart).attr({
         "contenteditable": "true",
         "class": "business__content",
@@ -1026,3 +1031,15 @@ function busExecutParameters(event) {
 
 /* CMACSS and javascript */
 /*Поработать с отдельными задачами в html, которые мне кажется я не запомнил как делать */
+
+// 1. Всем необходимым элементам назначать dragstart event +
+// 2. Их контейнерам назначить dradover и drop event
+// 3. Функция для dragstart с помещением ключа в DataTransfer
+// 4. Функция для drop
+//     Отсечь dragover
+//     Отсечь ситуацию, когда контейнер является старым родетелем перетаскиваемого элементам
+//     условие, которое принимает во внимание старый ключ, который значит будет меняться на новый.
+//     начиная с единицы начинаю проверять есть ли такой ключ в localStorage
+//     Создание нового объекта с присваиванием ему текущего ключа и содержимого
+//     удаление старого ключа из localStorage
+//     удаление элемента из старого родителя
