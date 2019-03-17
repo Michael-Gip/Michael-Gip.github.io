@@ -1043,7 +1043,7 @@ function busExecutParameters(event) {
 function dragStart(event) {
   // put all contenteditable elements data-approach values in array
   const edit_elements = this.querySelectorAll("[data-approach]"),
-  content = edit_elements[0].innerHTML;
+  content = edit_elements[0].innerHTML,
   keys_array = [];
   let index = 0;
   edit_elements.forEach(function(item) {
@@ -1052,28 +1052,29 @@ function dragStart(event) {
     index++;
   });
   // convert array to string and put it in DataTransfer
-  event.dataTransfer.setData("text", JSON.stringify(edit_elements));
+  event.dataTransfer.setData("text", JSON.stringify(keys_array));
 }
 function overDrop(event) {
   event.preventDefault();
   if (event.type !== "drop") {
     return;
   }
-  // check if dragging is finished
+  // check if dragging is finished in other than parent area
   const keys_array = JSON.parse(event.dataTransfer.getData("text"));
   console.log(keys_array[0]);
   console.log(keys_array[1]);
   console.log(keys_array[2]);
   console.log(keys_array[3]);
-  if (keys_array.length === 4) {
-    const container = document.querySelector(".businesses");
-    if (this === container) {
-      return;
-    } else {
-      const cur_content = document.querySelector("[name=" + keys_array[0] + "]").innerHTML;
-      addNewCase();
-    }
-  }
+//   if (keys_array.length === 4) {
+//     const container = document.querySelector(".businesses");
+//     if (this === container) {
+//       return;
+//     } else {
+//       const cur_content = document.querySelector("[name=" + keys_array[0] + "]").innerHTML;
+//       addNewCase();
+//     }
+//   }
+// }
 }
 /* CMACSS and javascript */
 /*Поработать с отдельными задачами в html, которые мне кажется я не запомнил как делать */
@@ -1097,5 +1098,5 @@ function overDrop(event) {
 
 // проверить function itemsDeleting при удалении текущего дела
 
-/* TODO опыт с превращением коллекции в строку и обратно */
+/* TODO stopped at 1063 line */
 
