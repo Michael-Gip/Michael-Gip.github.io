@@ -23,38 +23,51 @@ var indexes = {
 	panelIndex: 1
 };
 /* For all cases block */
+// Create cases for common list
+function addNewCase(event, cur_content) {
+  if (event.type === "click") {
+    event.preventDefault();
+  }
+
+  var container = document.querySelector(".list-container"),
+  newCase = document.createElement("li"),
+  newEditPart = document.createElement("p"),
+  newDeleteBut = document.createElement("span"),
+  newDeleteIcon = document.createTextNode("X");
+
+  $(newCase).attr({
+    "class": "all-cases-item",
+    "draggable": "true",
+  });
+  newCase.addEventListener("dragstart", dragStart);
+  $(newEditPart).attr({
+      "contenteditable": "true",
+      "data-approach": "allCases" + "_" + indexes.allCasesIndex
+  });
+  if (cur_content !== undefined) {
+    // assign content
+    newEditPart.innerHTML = cur_content;
+  }
+  
+  indexes.allCasesIndex++;
+  newEditPart.addEventListener("blur", saveInStorage);
+  newDeleteBut.setAttribute("class", "deleteBut");
+  newDeleteBut.addEventListener("click", itemsDeleting);
+
+  newDeleteBut.appendChild(newDeleteIcon);
+  newCase.appendChild(newEditPart);
+  newCase.appendChild(newDeleteBut);
+  container.appendChild(newCase);
+
+  if (cur_content !== undefined) {
+    return newCase;
+  }
+}
+  
+
 (function () {
   var addCaseButton = document.querySelector(".new-case");
   addCaseButton.addEventListener("click", addNewCase);
-
-  function addNewCase(event) {
-    event.preventDefault();
-
-    var container = document.querySelector(".list-container"),
-    newCase = document.createElement("li"),
-    newEditPart = document.createElement("p"),
-    newDeleteBut = document.createElement("span"),
-    newDeleteIcon = document.createTextNode("X");
-
-    $(newCase).attr({
-      "class": "all-cases-item",
-      "draggable": "true",
-    });
-    newCase.addEventListener("dragstart", dragStart);
-    $(newEditPart).attr({
-        "contenteditable": "true",
-        "data-approach": "allCases" + "_" + indexes.allCasesIndex
-    });
-    indexes.allCasesIndex++;
-    newEditPart.addEventListener("blur", saveInStorage);
-    newDeleteBut.setAttribute("class", "deleteBut");
-    newDeleteBut.addEventListener("click", itemsDeleting);
-
-    newDeleteBut.appendChild(newDeleteIcon);
-    newCase.appendChild(newEditPart);
-    newCase.appendChild(newDeleteBut);
-    container.appendChild(newCase);
-  }
 })();
 
 /* For today cases block */
@@ -62,135 +75,154 @@ var indexes = {
 (function () {
   var addCurCaseButton = document.querySelector(".current-case");
   addCurCaseButton.addEventListener("click", addCurCase);
-
-  function addCurCase(event) {
-    /* creation elements */
-    event.preventDefault();
-    var container = document.querySelector(".businesses"),
-    curCase = document.createElement("div"),
-    curCaseBody = document.createElement("div"),
-    curEditPart = document.createElement("p"),
-    defualtText = document.createTextNode("Занести новое дело"),
-    menuIcon = document.createElement("img"),
-    menuContainer = document.createElement("span"),
-    mainTomato = document.createElement("img"),
-    additionTomato = document.createElement("img"),
-    arrowUp = document.createElement("img"),
-    arrowDown = document.createElement("img"),
-    effort = document.createElement("img"),
-    pain = document.createElement("img"),
-    curDeleteBut = document.createElement("span"),
-    curDeleteButIcon = document.createTextNode("X"),
-    panel = document.createElement("span"),
-    planned = document.createElement("p"),
-    real = document.createElement("p");
-
-    /* assign attributes and listening for event */
-    $(curCase).attr({
-      "class": "business",
-      "draggable": "true"
-    });
-    curCase.addEventListener("dragstart", dragStart);
-    $(curEditPart).attr({
-        "contenteditable": "true",
-        "class": "business__content",
-        "data-approach": "businessContent" + "_" + indexes.businessIndex
-    });
-    indexes.businessIndex++;
-    curEditPart.addEventListener("blur", saveInStorage);
-    $(menuIcon).attr({
-        "src": "images/icon-menu.png",
-        "alt": "icon menu",
-        "class": "menuIcon"
-    });
-    menuIcon.addEventListener("click", createMenuState);
-    menuContainer.className = "menuContainer";
-    $(mainTomato).attr({
-        "src": "images/main-tomato.png",
-        "alt": "main tomato",
-        "class": "execution_icon"
-    });
-    mainTomato.addEventListener("click", busExecutParameters);
-    $(additionTomato).attr({
-        "src": "images/additional-tomato.png",
-        "alt": "additional tomato",
-        "class": "execution_icon"
-    });
-    additionTomato.addEventListener("click", busExecutParameters);
-    $(arrowUp).attr({
-        "src": "images/arrow_upward.png",
-        "alt": "arrow upward",
-        "class": "execution_icon"
-    });
-    arrowUp.addEventListener("click", busExecutParameters);
-    $(arrowDown).attr({
-        "src": "images/arrow_downward.png",
-        "alt": "arrow downward",
-        "class": "execution_icon"
-    });
-    arrowDown.addEventListener("click", busExecutParameters);
-    $(effort).attr({
-        "src": "images/effort.png",
-        "alt": "effort",
-        "class": "execution_icon"
-    });
-    effort.addEventListener("click", busExecutParameters);
-    $(pain).attr({
-        "src": "images/pain.png",
-        "alt": "pain",
-        "class": "execution_icon"
-    });
-    pain.addEventListener("click", busExecutParameters);
-    curDeleteBut.classList.add("deleteBut", "deleteBut-smaller");
-    curDeleteBut.addEventListener("click", itemsDeleting);
-    $(panel).attr({
-    	"class": "service-icons-panel",
-    	"data-approach": "panel" + "_" + indexes.panelIndex
-    });
-    $(planned).attr({
-        "contenteditable": "true",
-        "data-approach": "planned" + "_" + indexes.plannedIndex
-    });
-    indexes.plannedIndex++;
-    planned.classList.add("time-quantity", "planned");
-    planned.addEventListener("blur", saveInStorage);
-    $(real).attr({
-        "contenteditable": "true",
-        "data-approach": "real" + "_" + indexes.realIndex
-    });
-    indexes.realIndex++;
-    real.classList.add("time-quantity", "real");
-    real.addEventListener("blur", saveInStorage);
-
-    /* appending all nodes */
-    menuContainer.appendChild(mainTomato);
-    menuContainer.appendChild(additionTomato);
-    menuContainer.appendChild(arrowUp);
-    menuContainer.appendChild(arrowDown);
-    menuContainer.appendChild(effort);
-    menuContainer.appendChild(pain);
-
-    curDeleteBut.appendChild(curDeleteButIcon);
-
-    curEditPart.appendChild(defualtText);
-    curCaseBody.appendChild(curEditPart);
-    curCaseBody.appendChild(menuIcon);
-    curCaseBody.appendChild(menuContainer);
-    curCaseBody.appendChild(panel);
-    curCase.appendChild(curCaseBody);
-    curCase.appendChild(curDeleteBut);
-    curCase.appendChild(planned);
-    curCase.appendChild(real);
-    container.appendChild(curCase);
-
-    /* cleaning content defualt text */
-    curEditPart.addEventListener("focus", deleteDefaultText);
-    function deleteDefaultText(event) {
-        curEditPart.innerHTML = "";
-    }
-
-  }
 })();
+function addCurCase(event, cur_content) {
+  /* creation elements */
+  if (event.type === "click") {
+    event.preventDefault();
+  }
+  var container = document.querySelector(".businesses"),
+  curCase = document.createElement("div"),
+  curCaseBody = document.createElement("div"),
+  curEditPart = document.createElement("p"),
+  defualtText = document.createTextNode("Занести новое дело"),
+  menuIcon = document.createElement("img"),
+  menuContainer = document.createElement("span"),
+  mainTomato = document.createElement("img"),
+  additionTomato = document.createElement("img"),
+  arrowUp = document.createElement("img"),
+  arrowDown = document.createElement("img"),
+  effort = document.createElement("img"),
+  pain = document.createElement("img"),
+  curDeleteBut = document.createElement("span"),
+  curDeleteButIcon = document.createTextNode("X"),
+  panel = document.createElement("span"),
+  planned = document.createElement("p"),
+  real = document.createElement("p");
+
+  /* assign attributes and listening for event */
+  $(curCase).attr({
+    "class": "business",
+    "draggable": "true"
+  });
+  curCase.addEventListener("dragstart", dragStart);
+  $(curEditPart).attr({
+      "contenteditable": "true",
+      "class": "business__content",
+      "data-approach": "businessContent" + "_" + indexes.businessIndex
+  });
+  indexes.businessIndex++;
+
+
+  // if (localStorage.getItem("businessContent_1") === null) {
+  //   curEditPart.setAttribute("data-approach", "businessContent" + "_" + indexes.businessIndex);
+  // } else {
+  //   indexes.businessIndex++;
+  // }
+  
+  
+
+
+  curEditPart.addEventListener("blur", saveInStorage);
+  $(menuIcon).attr({
+      "src": "images/icon-menu.png",
+      "alt": "icon menu",
+      "class": "menuIcon"
+  });
+  menuIcon.addEventListener("click", createMenuState);
+  menuContainer.className = "menuContainer";
+  $(mainTomato).attr({
+      "src": "images/main-tomato.png",
+      "alt": "main tomato",
+      "class": "execution_icon"
+  });
+  mainTomato.addEventListener("click", busExecutParameters);
+  $(additionTomato).attr({
+      "src": "images/additional-tomato.png",
+      "alt": "additional tomato",
+      "class": "execution_icon"
+  });
+  additionTomato.addEventListener("click", busExecutParameters);
+  $(arrowUp).attr({
+      "src": "images/arrow_upward.png",
+      "alt": "arrow upward",
+      "class": "execution_icon"
+  });
+  arrowUp.addEventListener("click", busExecutParameters);
+  $(arrowDown).attr({
+      "src": "images/arrow_downward.png",
+      "alt": "arrow downward",
+      "class": "execution_icon"
+  });
+  arrowDown.addEventListener("click", busExecutParameters);
+  $(effort).attr({
+      "src": "images/effort.png",
+      "alt": "effort",
+      "class": "execution_icon"
+  });
+  effort.addEventListener("click", busExecutParameters);
+  $(pain).attr({
+      "src": "images/pain.png",
+      "alt": "pain",
+      "class": "execution_icon"
+  });
+  pain.addEventListener("click", busExecutParameters);
+  curDeleteBut.classList.add("deleteBut", "deleteBut-smaller");
+  curDeleteBut.addEventListener("click", itemsDeleting);
+  $(panel).attr({
+    "class": "service-icons-panel",
+    "data-approach": "panel" + "_" + indexes.panelIndex
+  });
+  $(planned).attr({
+      "contenteditable": "true",
+      "data-approach": "planned" + "_" + indexes.plannedIndex
+  });
+  indexes.plannedIndex++;
+  planned.classList.add("time-quantity", "planned");
+  planned.addEventListener("blur", saveInStorage);
+  $(real).attr({
+      "contenteditable": "true",
+      "data-approach": "real" + "_" + indexes.realIndex
+  });
+  indexes.realIndex++;
+  real.classList.add("time-quantity", "real");
+  real.addEventListener("blur", saveInStorage);
+
+  /* appending all nodes */
+  menuContainer.appendChild(mainTomato);
+  menuContainer.appendChild(additionTomato);
+  menuContainer.appendChild(arrowUp);
+  menuContainer.appendChild(arrowDown);
+  menuContainer.appendChild(effort);
+  menuContainer.appendChild(pain);
+
+  curDeleteBut.appendChild(curDeleteButIcon);
+  if (cur_content === undefined) {
+    curEditPart.appendChild(defualtText);
+  } else {
+    curEditPart.innerHTML = cur_content;
+  }
+  
+  curCaseBody.appendChild(curEditPart);
+  curCaseBody.appendChild(menuIcon);
+  curCaseBody.appendChild(menuContainer);
+  curCaseBody.appendChild(panel);
+  curCase.appendChild(curCaseBody);
+  curCase.appendChild(curDeleteBut);
+  curCase.appendChild(planned);
+  curCase.appendChild(real);
+  container.appendChild(curCase);
+
+  /* cleaning content defualt text */
+  curEditPart.addEventListener("focus", deleteDefaultText);
+  function deleteDefaultText(event) {
+      curEditPart.innerHTML = "";
+  }
+  // return created element in drop function
+  if (cur_content !== undefined) {
+    return curCase;
+  }
+}
 
 /*adding physical exercises function*/
 (function () {
@@ -618,16 +650,23 @@ var indexes = {
         "contenteditable": "true",
         "data-approach": "planned" + "_" + indexes.plannedIndex
     });
-    indexes.plannedIndex++;
     planned.classList.add("time-quantity", "planned");
     planned.addEventListener("blur", saveInStorage);
+    if (localStorage.getItem("planned" + "_" + indexes.plannedIndex) !== null) {
+    	planned.innerHTML = localStorage.getItem("planned" + "_" + indexes.plannedIndex);
+    indexes.plannedIndex++;
+    }
     $(real).attr({
         "contenteditable": "true",
         "data-approach": "real" + "_" + indexes.realIndex
     });
-    indexes.realIndex++;
     real.classList.add("time-quantity", "real");
     real.addEventListener("blur", saveInStorage);
+    if (localStorage.getItem("real" + "_" + indexes.realIndex) !== null) {
+    	real.innerHTML = localStorage.getItem("real" + "_" + indexes.realIndex);
+    indexes.realIndex++;
+    }
+
 
     /* appending all nodes */
     menuContainer.appendChild(mainTomato);
@@ -1002,12 +1041,18 @@ function saveInStorage(event) {
 }
 
 /* to remove unnecessary cases */
-function itemsDeleting(event) {
-	var removedElement = event.target.parentElement;
+function itemsDeleting(event, removedElement) {
+  if (event.type === "click") {
+    var removedElement = event.target.parentElement;
+  } else {
+    removedElement = removedElement;
+  }
 	editElements = removedElement.querySelectorAll("[data-approach]");
-	editElements.forEach(function(item, index, collection) {
-		localStorage.removeItem(item.getAttribute("data-approach"));
-	});
+	editElements.forEach(function(item) {
+    localStorage.removeItem(item.getAttribute("data-approach"));
+    // Due to removal problems with planned and real
+    item.remove();
+  });
 	removedElement.remove();
 }
 
@@ -1042,17 +1087,15 @@ function busExecutParameters(event) {
 
 function dragStart(event) {
   // put all contenteditable elements data-approach values in array
-  const edit_elements = this.querySelectorAll("[data-approach]"),
-  content = edit_elements[0].innerHTML,
-  keys_array = [];
-  let index = 0;
-  edit_elements.forEach(function(item) {
-    current_key = item.getAttribute("data-approach");
-    keys_array[index] = current_key;
-    index++;
-  });
-  // convert array to string and put it in DataTransfer
-  event.dataTransfer.setData("text", JSON.stringify(keys_array));
+  const editelement = this.querySelector("[data-approach]"),
+  editelement_key = editelement.getAttribute("data-approach"),
+  content = editelement.innerHTML,
+  editelement_data = {};
+  editelement_data.key = editelement_key;
+  editelement_data.content = content;
+
+  // convert object to string and put it in DataTransfer
+  event.dataTransfer.setData("text", JSON.stringify(editelement_data));
 }
 function overDrop(event) {
   event.preventDefault();
@@ -1060,43 +1103,33 @@ function overDrop(event) {
     return;
   }
   // check if dragging is finished in other than parent area
-  const keys_array = JSON.parse(event.dataTransfer.getData("text"));
-  console.log(keys_array[0]);
-  console.log(keys_array[1]);
-  console.log(keys_array[2]);
-  console.log(keys_array[3]);
-//   if (keys_array.length === 4) {
-//     const container = document.querySelector(".businesses");
-//     if (this === container) {
-//       return;
-//     } else {
-//       const cur_content = document.querySelector("[name=" + keys_array[0] + "]").innerHTML;
-//       addNewCase();
-//     }
-//   }
-// }
+  const editelement_data = JSON.parse(event.dataTransfer.getData("text"));
+  if (editelement_data.key.includes("businessContent")) {
+    const container = document.querySelector(".businesses"),
+    drag_el = container.querySelector("[data-approach=" + editelement_data.key + "]").parentElement.parentElement;
+    if (this === container) {
+      return;
+    } else {
+      const created_el = addNewCase(event, editelement_data.content),
+      // assign the new key in localStorage
+      key = created_el.querySelector("[contenteditable]").getAttribute("data-approach");
+      localStorage.setItem(key, editelement_data.content);
+      itemsDeleting(event, drag_el);
+    }
+  } else {
+    const container = document.querySelector(".list-container"),
+    drag_el = container.querySelector("[data-approach=" + editelement_data.key + "]").parentElement;
+    if (this === container) {
+      return;
+    } else {
+      const created_el = addCurCase(event, editelement_data.content),
+      key = created_el.querySelector("[contenteditable").getAttribute("data-approach");
+      localStorage.setItem(key, editelement_data.content);
+      itemsDeleting(event, drag_el);
+    }
+   }
 }
+
 /* CMACSS and javascript */
-/*Поработать с отдельными задачами в html, которые мне кажется я не запомнил как делать */
 
-// 1. Всем необходимым элементам назначать dragstart event +
-// 2. Их контейнерам назначить dradover и drop event
-// 3. Функция для dragstart с помещением ключа в DataTransfer
-      // Получить значения всех data-approach. Не важно это current или all cases
-      // Поместить их все в DataTransfer с помощью JSON.stringify и JSON.parse
-
-// 4. Функция для drop
-//     Отсечь dragover
-//     Отсечь ситуацию, когда контейнер является старым родетелем перетаскиваемого элементам
-          // необходимо: содержимое первого редактируемого элемента и ключи всех редактируемых элементов
-//     условие, которое принимает во внимание старый ключ, который значит будет меняться на новый.
-//     начиная с единицы начинаю проверять есть ли такой ключ в localStorage
-//     Создание нового объекта с присваиванием ему текущего ключа и содержимого
-//     удаление старого ключа из localStorage
-//     удаление элемента из старого родителя
-
-
-// проверить function itemsDeleting при удалении текущего дела
-
-/* TODO stopped at 1063 line */
-
+/* TODO Если физ упражнения не два выбраных подхода, то второй пропадает, а не остаётся none */
