@@ -108,17 +108,16 @@ function addCurCase(event, cur_content) {
   curCase.addEventListener("dragstart", dragStart);
   $(curEditPart).attr({
       "contenteditable": "true",
-      "class": "business__content",
-      "data-approach": "businessContent" + "_" + indexes.businessIndex
+      "class": "business__content"
   });
-  indexes.businessIndex++;
+
+  for (;localStorage.getItem("businessContent_" + indexes.businessIndex) !== null; indexes.businessIndex++) {
+    continue;
+} 
+  curEditPart.setAttribute("data-approach", "businessContent" + "_" + indexes.businessIndex);
+  indexes.businessIndex = 1;
 
 
-  // if (localStorage.getItem("businessContent_1") === null) {
-  //   curEditPart.setAttribute("data-approach", "businessContent" + "_" + indexes.businessIndex);
-  // } else {
-  //   indexes.businessIndex++;
-  // }
   
   
 
@@ -169,22 +168,28 @@ function addCurCase(event, cur_content) {
   pain.addEventListener("click", busExecutParameters);
   curDeleteBut.classList.add("deleteBut", "deleteBut-smaller");
   curDeleteBut.addEventListener("click", itemsDeleting);
-  $(panel).attr({
-    "class": "service-icons-panel",
-    "data-approach": "panel" + "_" + indexes.panelIndex
-  });
-  $(planned).attr({
-      "contenteditable": "true",
-      "data-approach": "planned" + "_" + indexes.plannedIndex
-  });
-  indexes.plannedIndex++;
+  panel.className = "service-icons-panel";
+  for (;localStorage.getItem("panel" + "_" + indexes.panelIndex) !== null; indexes.panelIndex++) {
+    continue;
+  }
+  panel.setAttribute("data-approach", "panel" + "_" + indexes.panelIndex)
+  indexes.panelIndex = 1;
+
+  planned.setAttribute("contenteditable", "true");
+  for (;localStorage.getItem("planned" + "_" + indexes.plannedIndex) !== null; indexes.plannedIndex++) {
+    continue;
+  }
+  planned.setAttribute("data-approach", "planned" + "_" + indexes.plannedIndex);
+  indexes.plannedIndex = 1;
   planned.classList.add("time-quantity", "planned");
   planned.addEventListener("blur", saveInStorage);
-  $(real).attr({
-      "contenteditable": "true",
-      "data-approach": "real" + "_" + indexes.realIndex
-  });
-  indexes.realIndex++;
+
+  real.setAttribute("contenteditable", "true");
+  for (; localStorage.getItem("real" + "_" + indexes.realIndex) !== null; indexes.realIndex++) {
+    continue;
+  }
+  real.setAttribute("data-approach", "real" + "_" + indexes.realIndex);
+  indexes.realIndex = 1;
   real.classList.add("time-quantity", "real");
   real.addEventListener("blur", saveInStorage);
 
@@ -1132,5 +1137,4 @@ function overDrop(event) {
 
 /* CMACSS and javascript */
 
-/* TODO Если физ упражнения не два выбраных подхода, то второй пропадает, а не остаётся none
-Во время занесения время окончание во второе дело, оно прыгает в первое*/
+/* TODO  Why sometimes in delete function does not get all data-approach values */
