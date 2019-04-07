@@ -115,7 +115,7 @@ function addCurCase(event, cur_content) {
     continue;
 } 
   curEditPart.setAttribute("data-approach", "businessContent" + "_" + indexes.businessIndex);
-  indexes.businessIndex = 1;
+  indexes.businessIndex++;
 
 
   
@@ -1049,6 +1049,7 @@ function saveInStorage(event) {
 function itemsDeleting(event, removedElement) {
   if (event.type === "click") {
     var removedElement = event.target.parentElement;
+    alert(removedElement.className);
   } else {
     removedElement = removedElement;
   }
