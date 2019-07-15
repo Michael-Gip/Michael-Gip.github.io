@@ -141,6 +141,7 @@ p {
 /* Styling all cases item */
  .list-container {
 	clear: both;
+	position:;
 }
  .all-cases-item {
  	position: relative;
@@ -180,10 +181,10 @@ p {
 	padding: 9px 35px 21px 2.575107296137339%;
 	background: #e9f1f1;
 }
-.business__content {
+.business_content {
 	color: #6ea7a7;
 }
-.business__content::before {
+.business_content::before {
 	margin-right: 0.6666666666666667em;
 	color: #6ea7a7;
 	content: counter(caseNumber, decimal)".";
