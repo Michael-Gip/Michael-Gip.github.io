@@ -140,8 +140,9 @@ p {
 
 /* Styling all cases item */
  .list-container {
-	clear: both;
-	position:;
+  clear: both;
+  min-height: 100px;
+  border: solid 3px red;
 }
  .all-cases-item {
  	position: relative;
