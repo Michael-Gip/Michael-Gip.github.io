@@ -506,7 +506,8 @@ function results(event) {
     date.setAttribute("data-approach", "date_" + index);
   }
   date.setAttribute("data-approach", "date_" + index);
-  date.addEventListener("blur", saveInStorage);
+  date.setAttribute("data-label", "Дата");
+ date.addEventListener("blur", saveInStorage);
 
 
   tomatoAmount.setAttribute("contenteditable", "true");
@@ -522,6 +523,7 @@ function results(event) {
     tomatoAmount.setAttribute("data-approach", "tomatoAmount_" + index);
   }
   tomatoAmount.setAttribute("data-approach", "tomatoAmount_" + index);
+  tomatoAmount.setAttribute("data-label", "Колличество помидоров");
   tomatoAmount.addEventListener("blur", saveInStorage);
 
 
@@ -538,6 +540,7 @@ function results(event) {
     strainAmount.setAttribute("data-approach", "strainAmount_" + index);
   }
   strainAmount.setAttribute("data-approach", "strainAmount_" + index);
+  strainAmount.setAttribute("data-label", "Количество напряжений");
   strainAmount.addEventListener("blur", saveInStorage);
 
   rightAttitude.setAttribute("contenteditable", "true");
@@ -553,6 +556,7 @@ function results(event) {
     rightAttitude.setAttribute("data-approach", "rightAttitude_" + index);
   }
   rightAttitude.setAttribute("data-approach", "rightAttitude_" + index);
+  rightAttitude.setAttribute("data-label", "Количество верных отношений");
   rightAttitude.addEventListener("blur", saveInStorage);
 
 
@@ -569,6 +573,7 @@ function results(event) {
     falseAttitude.setAttribute("data-approach", "falseAttitude_" + index);
   }
   falseAttitude.setAttribute("data-approach", "falseAttitude_" + index);
+  falseAttitude.setAttribute("data-label", "Количество не верных отношений");
   falseAttitude.addEventListener("blur", saveInStorage);
 
   totalPhysTime.setAttribute("contenteditable", "true");
@@ -584,6 +589,7 @@ function results(event) {
     totalPhysTime.setAttribute("data-approach", "totalPhysTime_" + index);
   }
   totalPhysTime.setAttribute("data-approach", "totalPhysTime_" + index);
+  totalPhysTime.setAttribute("data-label", "Общее время физ. упражнений");
   totalPhysTime.addEventListener("blur", saveInStorage);
 
 
@@ -600,6 +606,7 @@ function results(event) {
     totalNetTime.setAttribute("data-approach", "totalNetTime_" + index);
   }
   totalNetTime.setAttribute("data-approach", "totalNetTime_" + index);
+  totalNetTime.setAttribute("data-label", "Общее время в соц. сетях");
   totalNetTime.addEventListener("blur", saveInStorage);
   logDeleteBut.className = "resultDeleteBut";
   logDeleteBut.addEventListener("click", itemsDeleting);
@@ -1057,37 +1064,44 @@ if (log_indexes.length !== 0) {
     /* appending attributes */
     $(date).attr({
       "contenteditable": "true",
-      "data-approach": "date_" + log_indexes[i]
+      "data-approach": "date_" + log_indexes[i],
+      "data-label": "Дата"
   });
   date.addEventListener("blur", saveInStorage);
   $(tomatoAmount).attr({
       "contenteditable": "true",
-      "data-approach": "tomatoAmount_" + log_indexes[i]
+      "data-approach": "tomatoAmount_" + log_indexes[i],
+      "data-label": "Колличество помидоров"
   });
   tomatoAmount.addEventListener("blur", saveInStorage);
   $(strainAmount).attr({
       "contenteditable": "true",
-      "data-approach": "strainAmount_" + log_indexes[i]
+      "data-approach": "strainAmount_" + log_indexes[i],
+      "data-label": "Количество напряжений"
   });
   strainAmount.addEventListener("blur", saveInStorage);
   $(rightAttitude).attr({
       "contenteditable": "true",
-      "data-approach": "rightAttitude_" + log_indexes[i]
+      "data-approach": "rightAttitude_" + log_indexes[i],
+      "data-label": "Количество верных отношений"
   });
   rightAttitude.addEventListener("blur", saveInStorage);
   $(falseAttitude).attr({
       "contenteditable": "true",
-    "data-approach": "falseAttitude_" + log_indexes[i]
+    "data-approach": "falseAttitude_" + log_indexes[i],
+    "data-label": "Количество не верных отношений"
   });
   falseAttitude.addEventListener("blur", saveInStorage);
   $(totalPhysTime).attr({
       "contenteditable": "true",
-      "data-approach": "totalPhysTime_" + log_indexes[i]
+      "data-approach": "totalPhysTime_" + log_indexes[i],
+      "data-label": "Общее время физ. упражнений"
   });
   totalPhysTime.addEventListener("blur", saveInStorage);
   $(totalNetTime).attr({
       "contenteditable": "true",
-      "data-approach": "totalNetTime_" + log_indexes[i]
+      "data-approach": "totalNetTime_" + log_indexes[i],
+      "data-label": "Общее время в соц. сетях"
   });
   totalNetTime.addEventListener("blur", saveInStorage);
   logDeleteBut.className = "resultDeleteBut";
@@ -1234,4 +1248,4 @@ function selectApproach(event) {
   }
 }
 
-/* TODO: остановился на 909 строке (на сетевой активности) */
+/* TODO: проблемы с восстановлением таблицы */
