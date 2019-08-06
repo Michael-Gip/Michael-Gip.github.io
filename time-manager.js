@@ -483,43 +483,50 @@ function addCurCase(event, cur_content) {
   	/* appending attributes */
   	$(date).attr({
   		"contenteditable": "true",
-  		"data-approach": "date" + "_" + indexes.dateIndex
+      "data-approach": "date" + "_" + indexes.dateIndex,
+      "data-label": "Дата"
   	});
   	indexes.dateIndex++;
   	date.addEventListener("blur", saveInStorage);
   	$(tomatoAmount).attr({
   		"contenteditable": "true",
-  		"data-approach": "tomatoAmount" + "_" + indexes.tomatoAmountIndex
+      "data-approach": "tomatoAmount" + "_" + indexes.tomatoAmountIndex,
+      "data-label": "Колличество помидоров"
   	});
   	indexes.tomatoAmountIndex++;
   	tomatoAmount.addEventListener("blur", saveInStorage);
   	$(strainAmount).attr({
   		"contenteditable": "true",
-  		"data-approach": "strainAmount" + "_" + indexes.strainIndex
+      "data-approach": "strainAmount" + "_" + indexes.strainIndex,
+      "data-label": "Количество напряжений"
   	});
   	indexes.strainIndex++;
   	strainAmount.addEventListener("blur", saveInStorage);
   	$(rightAttitude).attr({
   		"contenteditable": "true",
-  		"data-approach": "rightAttitude" + "_" + indexes.rightAttitudeIndex
+      "data-approach": "rightAttitude" + "_" + indexes.rightAttitudeIndex,
+      "data-label": "Количество верных отношений"
   	});
   	indexes.rightAttitudeIndex++;
   	rightAttitude.addEventListener("blur", saveInStorage);
   	$(falseAttitude).attr({
   		"contenteditable": "true",
-      "data-approach": "falseAttitude" + "_" + indexes.falseAttitudeIndex
+      "data-approach": "falseAttitude" + "_" + indexes.falseAttitudeIndex,
+      "data-label": "Количество не верных отношений"
   	});
   	indexes.falseAttitudeIndex++;
   	falseAttitude.addEventListener("blur", saveInStorage);
   	$(physTotalTime).attr({
   		"contenteditable": "true",
-  		"data-approach": "physTotalTime" + "_" + indexes.physTotalTimeIndex
+      "data-approach": "physTotalTime" + "_" + indexes.physTotalTimeIndex,
+      "data-label": "Общее время физ. упражнений"
   	});
   	indexes.physTotalTimeIndex++;
   	physTotalTime.addEventListener("blur", saveInStorage);
   	$(netTotalTime).attr({
   		"contenteditable": "true",
-  		"data-approach": "netTotalTime" + "_" + indexes.netTotalTimeIndex
+      "data-approach": "netTotalTime" + "_" + indexes.netTotalTimeIndex,
+      "data-label": "Общее время в соц. сетях"
   	});
   	indexes.netTotalTimeIndex++;
   	netTotalTime.addEventListener("blur", saveInStorage);
@@ -941,37 +948,44 @@ function addCurCase(event, cur_content) {
     /* appending attributes */
     $(date).attr({
         "contenteditable": "true",
-        "data-approach": "date" + "_" + indexes.dateIndex
+        "data-approach": "date" + "_" + indexes.dateIndex,
+        "data-label": "Дата"
     });
     date.addEventListener("blur", saveInStorage);
     $(tomatoAmount).attr({
         "contenteditable": "true",
-        "data-approach": "tomatoAmount" + "_" + indexes.tomatoAmountIndex
+        "data-approach": "tomatoAmount" + "_" + indexes.tomatoAmountIndex,
+        "data-label": "Колличество помидоров"
     });
     tomatoAmount.addEventListener("blur", saveInStorage);
     $(strainAmount).attr({
         "contenteditable": "true",
-        "data-approach": "strainAmount" + "_" + indexes.strainIndex
+        "data-approach": "strainAmount" + "_" + indexes.strainIndex,
+        "data-label": "Количество напряжений"
     });
     strainAmount.addEventListener("blur", saveInStorage);
     $(rightAttitude).attr({
         "contenteditable": "true",
-        "data-approach": "rightAttitude" + "_" + indexes.rightAttitudeIndex
+        "data-approach": "rightAttitude" + "_" + indexes.rightAttitudeIndex,
+        "data-label": "Количество верных отношений"
     });
     rightAttitude.addEventListener("blur", saveInStorage);
     $(falseAttitude).attr({
         "contenteditable": "true",
-      "data-approach": "falseAttitude" + "_" + indexes.falseAttitudeIndex
+      "data-approach": "falseAttitude" + "_" + indexes.falseAttitudeIndex,
+      "data-label": "Количество не верных отношений"
     });
     falseAttitude.addEventListener("blur", saveInStorage);
     $(physTotalTime).attr({
         "contenteditable": "true",
-        "data-approach": "physTotalTime" + "_" + indexes.physTotalTimeIndex
+        "data-approach": "physTotalTime" + "_" + indexes.physTotalTimeIndex,
+        "data-label": "Общее время физ. упражнений"
     });
     physTotalTime.addEventListener("blur", saveInStorage);
     $(netTotalTime).attr({
         "contenteditable": "true",
-        "data-approach": "netTotalTime" + "_" + indexes.netTotalTimeIndex
+        "data-approach": "netTotalTime" + "_" + indexes.netTotalTimeIndex,
+        "data-label": "Общее время в соц. сетях"
     });
     netTotalTime.addEventListener("blur", saveInStorage);
     logDeleteBut.className = "resultDeleteBut";
