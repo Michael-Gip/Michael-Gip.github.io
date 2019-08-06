@@ -92,13 +92,26 @@ p {
 	counter-reset: taskNumber 0;
 	background: #fff;
 }
-
+@media (max-width: 862px) {
+  #all-cases {
+    position: static;
+    margin-bottom: 16px;
+    width: auto;
+  }
+}
 /* Section with moduls of today cases, social network and physique approach chronicle. */
 #today-cases {
 	float: right;
 	margin-bottom: 16px;
 	width: 61.00950987564009%;
 	background: #fff;
+}
+@media (max-width: 862px) {
+  #today-cases {
+    float: none;
+    margin-bottom: 16px;
+    width: auto;
+  }
 }
 
 /* Analysis Section for looking for disadvantages in hours management */
@@ -110,13 +123,25 @@ p {
 	counter-reset: analysis 0;
 	/* Счётчики CSS https://getinstance.info/articles/css/understanding-css-counters-and-their-use-cases/ */
 }
+@media (max-width: 862px) {
+  #analysis {
+    float: none;
+    width: auto;
+  }
+}
 
 /* Log of success and failure of hours management */
 #log {
 	float: right;	
 	margin-bottom: 16px;
-	width: 61.00950987564009%;
-	background: #fff;	
+  width: 61.00950987564009%;
+  background: #fff;
+}
+@media (max-width: 862px) {
+  #log {
+    float: none;
+    width: auto;
+  }
 }
 .l-pad-shadow {
 	padding: 30px 2.633504023408925%;
@@ -190,9 +215,11 @@ p {
 	content: counter(caseNumber, decimal)".";
 	counter-increment: caseNumber 1;
 }
-/* .business > div:active, .business > div:focus  {
-	outline: none;
-} */
+@media (max-width: 1200px) {
+  .business {
+    width: 44.60227486138047%;
+  }
+}
 
 /* Delete button module and submodule*/
 .deleteBut {
@@ -252,7 +279,7 @@ p {
 	right: 35px;
 	border-bottom: solid 1px #90bcbc;
 	border-left: solid 1px #90bcbc;
-	height: 1.266666666666667em;
+	min-height: 1.266666666666667em;
 	padding-left: 2.575107296137339%;
 	line-height: 1.266666666666667;
 }
@@ -273,12 +300,18 @@ p {
 }
 .time-quantity-analysis {
 	clear: left;
-	float: left;
+	/* float: left; */
 	position: relative;
 	margin: 8px 0;
 	padding-right: 13px;
-	width: 35.1089588377724%; /* 290px */;
+	width: 50%;
 	font-size: 1em;
+}
+@media (max-width: 862px) {
+  .time-quantity-analysis {
+    margin: 16px 0;
+    width: auto;
+  }
 }
 .time-quantity-analysis > p::before {
 	padding-right: 2.068965517241379%;
@@ -297,14 +330,31 @@ p {
 	width: 50%;
 	overflow: visible;
 }
+@media (max-width: 862px) {
+  .halfInterior {
+    float: none;
+    width: 100%;
+  }
+}
 .halfInterior-physExercis {	
 	border-right: solid 1px #90bcbc;		
+}
+@media (max-width: 862px) {
+  .halfInterior-physExercis {
+    border-right: none;
+  }
 }
 .halfInterior-socialNet {
 	margin-top: 10px;
 	padding-left: 4.353083434099154%;
 	width: 50%;
 	overflow: auto;
+}
+@media (max-width: 862px) {
+  .halfInterior-socialNet {
+    padding-left: 0;
+    width: 100%;
+  }
 }
 
 /* floating labels */
@@ -319,8 +369,9 @@ p {
 	margin: 10px 0 13px;
 }
 .approach-container {
-	float: left;
-	width: 77%;
+  overflow: auto;
+  min-width: 50%;
+  /* min-width: 140px; */
 }
 /* define type, time and amount */
 .approach {
@@ -330,11 +381,16 @@ p {
 	margin: 0 3.883495145631068% 10px 0;
 	padding: 6px 11px 0 6px;
 }
+@media (max-width: 862px) {
+  .approach {
+    margin-right: 1.7%;
+  }
+}
 .approach-phys {
 	width: 40px;
 }
 .approach-news {
-	width: 35.1089588377724%;
+	max-width: 35.1089588377724%;
 }
 
 .selectApproach {
@@ -406,16 +462,42 @@ p {
 .results {
 	clear: left;
 	border-collapse: separate;
-	border-spacing: 2px 7px;
+  width: 100%;
 	font-size: 0.9333333333333333em;
 }
+@media (max-width: 1203px) {
+  thead {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+}
+@media (max-width: 1203px) {
+  tr {
+    display: block;
+    margin-bottom: 7px;
+  }
+}
 .results th {
+  padding: 3px 0;
   font-weight: normal;
 }
 .results td {
-	height: 1.2em;
+  height: 1.2em;
 	background: #f2f2f2;
 	text-align: center;
+}
+@media (max-width: 1203px) {
+  .results td {
+    display: block;
+    margin-bottom: 3px;
+    padding: 3px 10px 3px 3px;
+    text-align: right;
+  }
+  .results td::before {
+    content: attr(data-label);
+    float: left;
+  }
 }
 .resultDeleteBut {
 	cursor: pointer;
