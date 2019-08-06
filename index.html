@@ -1,105 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="describtion" content="Block with shadow">
-	<meta name="author" content="Michael Gipsman">
-	<title>Block with shadow</title>
-	<link rel="stylesheet" type="text/css" href="time-management.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="describtion" content="Block with shadow">
+  <meta name="author" content="Michael Gipsman">
+  <title>Block with shadow</title>
+  <link rel="stylesheet" type="text/css" href="time-management.css">
 </head>
+
 <body>
-	<!-- Centered page container -->
-	<div id="container">
-		<header id="page-header">
-			<h1>Использование времени</h1>
-		</header>
-		<!-- All cases block with height equal page height -->
-		<section id="all-cases" class="l-pad-shadow">
-			<h2>Реестр всех дел</h2>
-			<form action="">
-				<button class="new-case add-button">Новое дело</button>
-			</form>
-			<!-- List of all cases -->
-			<ul class="list-container">
+  <!-- Centered page container -->
+  <div id="container">
+    <header id="page-header">
+      <h1>Использование времени</h1>
+    </header>
+    <!-- All cases block with height equal page height -->
+    <section id="all-cases" class="l-pad-shadow">
+      <h2>Реестр всех дел</h2>
+      <form action="">
+        <button class="new-case add-button">Новое дело</button>
+      </form>
+      <!-- List of all cases -->
+      <ul class="list-container">
 
-			</ul>
-		</section>
+      </ul>
+    </section>
 
-		<section id="today-cases" class="l-pad-shadow">
-			<h2>Реестр текущего дня</h2>
-			<form action="">
-				<button class="current-case add-button">Добавить задачу</button>
-			  </form>
-			<!-- section of current bisenesses -->
-			<section class="businesses">
-				<h3>Основные занятия</h3>
+    <section id="today-cases" class="l-pad-shadow">
+      <h2>Реестр текущего дня</h2>
+      <form action="">
+        <button class="current-case add-button">Добавить задачу</button>
+      </form>
+      <!-- section of current bisenesses -->
+      <section class="businesses">
+        <h3>Основные занятия</h3>
 
-			</section>
+      </section>
 
-			<!-- physical approachs's statistics -->
-			<section class=" halfInterior halfInterior-physExercis">
-				<h3>Физ. упражнения</h3>
-				<form action="">
-				<button class="add-button exerciseBut">Добавить упражнение</button>
-			  </form>
-			  <ul class="labels">
-				  <li>Тип упражнения</li>
-				  <li>Время</li>
-				  <li>Количество</li>
-			  </ul>
-			  <div class="approach-container phys">
+      <!-- physical approachs's statistics -->
+      <section class=" halfInterior halfInterior-physExercis">
+        <h3>Физ. упражнения</h3>
+        <form action="">
+          <button class="add-button exerciseBut">Добавить упражнение</button>
+        </form>
+        <ul class="labels">
+          <li>Тип упражнения</li>
+          <li>Время</li>
+          <li>Количество</li>
+        </ul>
+        <div class="approach-container phys">
 
-			</div>
+        </div>
 
-		</section>
+      </section>
 
-		 <!-- social networks and news section -->
-		 <section class="halfInterior halfInterior-socialNet">
-		 	<h3>Соц. сети / новости</h3>
-				<form action="">
-				<button class="add-button">Новый просмотр</button>
-			  </form>
-			  <div class="approach-container">
+      <!-- social networks and news section -->
+      <section class="halfInterior halfInterior-socialNet">
+        <h3>Соц. сети / новости</h3>
+        <form action="">
+          <button class="add-button">Новый просмотр</button>
+        </form>
+        <div class="approach-container">
 
-			  </div>
+        </div>
 
-		 </section>
-		</section>
+      </section>
+    </section>
 
-		<section id="analysis" class="l-pad-shadow">
-			<h2>Анализ</h2>
-			<form action="">
-				<button class="add-button">Добавить анализ</button>
-			</form>
-			<ul class="list-container">
-			</ul>
-		</section>
+    <section id="analysis" class="l-pad-shadow">
+      <h2>Анализ</h2>
+      <form action="">
+        <button class="add-button">Добавить анализ</button>
+      </form>
+      <ul class="list-container">
+      </ul>
+    </section>
 
-		<section id="log" class="l-pad-shadow">
-			<h2>Журнал</h2>
-			<form action="">
-				<button class="add-button">Добавить результаты дня</button>
-			</form>
-			<table class="results">
-				<tr>
-					<th>Дата</th>
-					<th>Колличество помидоров</th>
-					<th>Количество напряжений</th>
-					<th>Количество верных отношений</th>
-					<th>Количество не верных отношений</th>
-					<th>Общее время физ. упражнений</th>
-					<th>Общее время в соц. сетях</th>
-				</tr>
-			</table>
-		</section>
-	</div>
-	<script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
-	<script src="time-management.js"></script>
+    <section id="log" class="l-pad-shadow">
+      <h2>Журнал</h2>
+      <form action="">
+        <button class="add-button">Добавить результаты дня</button>
+      </form>
+      <table class="results">
+        <thead>
+          <tr>
+            <th>Дата</th>
+            <th>Колличество помидоров</th>
+            <th>Количество напряжений</th>
+            <th>Количество верных отношений</th>
+            <th>Количество не верных отношений</th>
+            <th>Общее время физ. упражнений</th>
+            <th>Общее время в соц. сетях</th>
+          </tr>
+        </thead>
+      </table>
+    </section>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+  <script src="time-management.js"></script>
 </body>
+
 </html>
 
-
+<!-- TODO: не сохраняется в хроме и вторая строка в файр фокс не сохраняется -->
